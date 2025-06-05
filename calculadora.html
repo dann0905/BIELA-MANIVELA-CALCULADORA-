@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mecanismo Biela Manivela Excéntrico</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #bd6424;
+      color: rgb(0, 0, 0);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: rgb(0, 0, 0);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: rgb(255, 247, 247);
+    }
+
+    input[type=number], select {
+      width: 200px;
+      padding: 5px;
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-weight: bold;
+      border: none;
+      background-color: rgb(227, 179, 112);
+      color: #000000;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .output, .info-box {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      background: #dc8f54;
+      color: rgb(0, 0, 0);
+    }
+
+    .datos {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    #errorMensaje {
+      color: red;
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    hr {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Universidad Católica de Santa María</h1>
+  <h2>Ingeniería Mecánica</h2>
+  <h2>Mecanismo Biela Manivela Excéntrico</h2>
+
+  <div class="datos">
+    <p><strong>Docente:</strong> Ing. Alcazar Rojas Herman</p>
+    <p><strong>Curso:</strong> Mecanismos y vibraciones</p>
+  </div>
+  <div><h3>Explora aprende y calcula</h3><p>Accede a una plataforma que te guía desde la teoría hasta la práctica con una calculadora interactiva basada en las ecuaciones reales. Optimiza tu tiempo y comprende cada paso del proceso.</p></div>
+
+  <!-- 🔍 Selector de información teórica -->
+  <label for="infoTeorica">¿Deseas intentarlo por tu cuenta con teoría de apoyo?</label>
+  <select id="infoTeorica" onchange="mostrarTeoria()">
+    <option value="">Elige qué consultar:</option>
+    <option value="teoria">Que es un sistema viela manivela</option>
+    <option value="simbolos">Simbología</option>
+    <option value="ecuaciones">Ecuaciones que puedas </option>
+  </select>
+
+  <!-- Contenedores para mostrar la información teórica -->
+  <div id="teoriaBox" class="info-box hidden">
+    <h3>Teoría del Mecanismo</h3>
+    <p>La biela-manivela excéntrica transforma el movimiento rotacional en movimiento lineal mediante una manivela que gira alrededor de un eje desplazado. La excentricidad define cómo varía la trayectoria de la biela, lo cual genera un movimiento alternante. Esto afecta directamente la amplitud, velocidad y aceleración del sistema.</p>
+    <p>Claro esta tambien que en caso de que la exentricidad sea 0 este sistema actuara como un mecanismo viela manivela normal.</p>
+    <h3>FUNCIONAMIENTO DE UN BIELA MANIVELA EXCÉNTRICA.</h3>
+    <p> <h3>Manivela y su Eje Externo: </h3> Cuando el eje de la manivela es excéntrico, la rotación de la manivela genera un movimiento oscilante en la biela. A medida que la manivela gira, el punto de conexión de la biela describe un movimiento alternativo, generando el tipo de movimiento lineal que se necesita en aplicaciones como motores y bombas.</p>
+    <p><h3>Movimiento Alternativo de la Biela:</h3> Debido a la excentricidad, la biela no sigue una trayectoria circular, sino que describe una trayectoria oscilante o de vaivén. Este es el movimiento que se utiliza para transformar la energía rotacional en energía lineal.</p>
+    <p><h3>Amplitud y Velocidad del Movimiento: </h3>La excentricidad influye directamente en la amplitud y en la velocidad del movimiento de la biela. Cuanto mayor sea la excentricidad, mayor será la amplitud del movimiento alternativo de la biela. En cuanto a la velocidad, la biela se moverá más lentamente cuando esté cerca del punto muerto, pero aumentará la velocidad cuando la manivela pase por el centro de su movimiento.</p>
+    <p><h3>Aceleración no Constante:</h3>La aceleración de la biela también varía a lo largo de su ciclo de movimiento. En ciertos puntos del ciclo, la biela se mueve con mayor aceleración, mientras que en otros puntos se desacelera. Esta variabilidad se debe al comportamiento excéntrico de la manivela, ya que la distancia entre el eje de rotación y el punto de conexión de la biela cambia constantemente durante el ciclo de la manivela.</p>
+
+
+
+</div>
+
+  <div id="simbolosBox" class="info-box hidden">
+    <h3>Simbología</h3>
+    <ul>
+      <li><strong>Lm</strong>: Longitud de la manivela</li>
+      <li><strong>Lb</strong>: Longitud de la biela</li>
+      <li><strong>e</strong>: Excentricidad</li>
+      <li><strong>θm</strong>: Ángulo de la manivela</li>
+      <li><strong>θb</strong>: Ángulo de la biela</li>
+      <li><strong>s</strong>: Posición de la corredera</li>
+    </ul>
+  </div>
+
+  <div id="ecuacionesBox" class="info-box hidden">
+    <h3>Ecuaciones Fundamentales</h3>
+    <p><strong>ECUACIÓN DE MOVIMIENTO</strong><br>  
+      Lm·cos(θm) + Lb·cos(θb) = s<br>
+      Lm·sen(θm) + e = Lb·sen(θb)
+    </p>
+    <p>Conociendo  los valores Lm,Lb, e y alguno de los dos ángulos podemos obtener el desplazamiento asi como tambien el otro angulo.</p>
+    <p><strong>Velocidades (por derivación):</strong><br>
+      -Lm·sen(θm)·θ̇m - Lb·sen(θb)·θ̇b = ṡ<br>
+      -Lm·cos(θm)·θ̇m + Lb·cos(θb)·θ̇b = 0
+    </p>
+    <p><strong>Aceleraciones:</strong><br>
+      Derivando nuevamente las expresiones anteriores con respecto al tiempo.
+    </p>
+  </div>
+  <div> <h3>¿No sabes por dónde empezar? ¡Nosotros te enseñamos!</h3><p>En el siguiente enlace encontrarás todo lo que necesitas: una explicación clara sobre la teoría del mecanismo biela-manivela, el paso a paso para resolver un sistema de este tipo y una guía completa para usar nuestra calculadora.
+
+Además, te mostramos cómo está construido parte del código para que veas que nuestra herramienta se basa directamente en la teoría que te explicamos. Así entenderás no solo cómo usarla, sino también por qué funciona.</p> </div>
+<p>¿Quieres entenderlo todo? El video te lo explica mejor → </p><a href="https://youtu.be/qJQZ-nFZSmw">clic aquí</a>
+  <hr>
+  <label for="opcionCalculo">¿Deseas calcular de manera rapida y efectiva?</label>
+  <select id="opcionCalculo" onchange="habilitarEntradas()">
+    <option value="">--Seleccione--</option>
+    <option value="posicion">Solo posiciones</option>
+    <option value="velocidad">Velocidades</option>
+    <option value="aceleracion">Aceleraciones</option>
+    <option value="fuerza">Fuerzas de inercia y torque</option>
+  </select>
+
+  <!-- Entradas -->
+  <label>Longitud Manivela (Lm): <input type="number" id="Lm" step="any" disabled /></label>
+  <label>Longitud Biela (Lb): <input type="number" id="Lb" step="any" disabled /></label>
+  <label>Excentricidad (e): <input type="number" id="e" step="any" disabled /></label>
+  <label>Ángulo Manivela (Am) grados: <input type="number" id="Am" step="any" disabled /></label>
+  <label>Velocidad Angular Manivela (Vam) rad/s: <input type="number" id="Vam" step="any" disabled /></label>
+  <label>Aceleración Angular Manivela (Aam) rad/s²: <input type="number" id="Aam" step="any" disabled /></label>
+  <label>Masa Manivela (kg): <input type="number" id="mm" step="any" disabled /></label>
+  <label>Masa Biela (kg): <input type="number" id="mb" step="any" disabled /></label>
+  <label>Masa Corredera (kg): <input type="number" id="mc" step="any" disabled /></label>
+  <label>Momento Inercia Manivela (kg·m²): <input type="number" id="Im" step="any" disabled /></label>
+
+  <div id="errorMensaje"></div>
+  <button onclick="calcularDatos()">Calcular Datos de Salida</button>
+  
+  <!-- Resultados -->
+  <div class="output">
+    <p>Ángulo Biela (Ab): <span id="Ab"></span></p>
+    <p>Posición Corredera (Pc): <span id="Pc"></span></p>
+    <p>Velocidad Angular Biela (Vab): <span id="Vab"></span></p>
+    <p>Velocidad Corredera (Vc): <span id="Vc"></span></p>
+    <p>Aceleración Angular Biela (Aab): <span id="Aab"></span></p>
+    <p>Aceleración Corredera (Ac): <span id="Ac"></span></p>
+    <hr>
+    <p>Fuerza Inercia Manivela (N): <span id="Fm"></span></p>
+    <p>Fuerza Inercia Biela (N): <span id="Fb"></span></p>
+    <p>Reacción en Corredera (N): <span id="Rc"></span></p>
+    <p>Par Motor Requerido (Nm): <span id="Torque"></span></p>
+  </div>
+
+  <!-- JavaScript para cálculo e interfaz -->
+  <script>
+    function sind(x) { return Math.sin(x * Math.PI / 180); }
+    function cosd(x) { return Math.cos(x * Math.PI / 180); }
+    function asind(x) { return Math.asin(x) * 180 / Math.PI; }
+    function det3(m) {
+      return m[0][0]*(m[1][1]*m[2][2]-m[1][2]*m[2][1]) -
+             m[0][1]*(m[1][0]*m[2][2]-m[1][2]*m[2][0]) +
+             m[0][2]*(m[1][0]*m[2][1]-m[1][1]*m[2][0]);
+    }
+
+    function mostrarTeoria() {
+      const boxes = ['teoriaBox', 'simbolosBox', 'ecuacionesBox'];
+      const seleccion = document.getElementById("infoTeorica").value;
+
+      boxes.forEach(id => document.getElementById(id).classList.add("hidden"));
+      if (seleccion) document.getElementById(seleccion + "Box").classList.remove("hidden");
+    }
+
+    function habilitarEntradas() {
+      const opcion = document.getElementById("opcionCalculo").value;
+      const campos = {
+        posicion: ['Lm', 'Lb', 'e', 'Am'],
+        velocidad: ['Lm', 'Lb', 'e', 'Am', 'Vam'],
+        aceleracion: ['Lm', 'Lb', 'e', 'Am', 'Vam', 'Aam'],
+        fuerza: ['Lm', 'Lb', 'e', 'Am', 'Vam', 'Aam', 'mm', 'mb', 'mc', 'Im']
+      };
+      document.querySelectorAll('input[type="number"]').forEach(input => {
+        input.disabled = true;
+        input.style.backgroundColor = '#ccc';
+      });
+      if (opcion in campos) {
+        campos[opcion].forEach(id => {
+          const campo = document.getElementById(id);
+          campo.disabled = false;
+          campo.style.backgroundColor = 'white';
+        });
+      }
+    }
+
+    function calcularDatos() {
+      const opcion = document.getElementById("opcionCalculo").value;
+      const errorDiv = document.getElementById("errorMensaje");
+      errorDiv.innerText = '';
+
+      if (!opcion) {
+        errorDiv.innerText = 'Debe seleccionar una opción de cálculo.';
+        return;
+      }
+
+      const Lm = parseFloat(document.getElementById('Lm').value);
+      const Lb = parseFloat(document.getElementById('Lb').value);
+      const e = parseFloat(document.getElementById('e').value);
+      const Am = parseFloat(document.getElementById('Am').value);
+      const Vam = parseFloat(document.getElementById('Vam').value);
+      const Aam = parseFloat(document.getElementById('Aam').value);
+      const mm = parseFloat(document.getElementById('mm').value);
+      const mb = parseFloat(document.getElementById('mb').value);
+      const mc = parseFloat(document.getElementById('mc').value);
+      const Im = parseFloat(document.getElementById('Im').value);
+
+      function clearResults() {
+        ['Ab','Pc','Vab','Vc','Aab','Ac','Fm','Fb','Rc','Torque'].forEach(id => {
+          document.getElementById(id).innerText = '';
+        });
+      }
+
+      clearResults();
+
+      if (opcion === 'posicion' && [Lm, Lb, e, Am].some(isNaN)) {
+        errorDiv.innerText = 'Complete los datos para posición.';
+        return;
+      }
+      if (opcion === 'velocidad' && [Lm, Lb, e, Am, Vam].some(isNaN)) {
+        errorDiv.innerText = 'Complete los datos para velocidad.';
+        return;
+      }
+      if (opcion === 'aceleracion' && [Lm, Lb, e, Am, Vam, Aam].some(isNaN)) {
+        errorDiv.innerText = 'Complete los datos para aceleración.';
+        return;
+      }
+      if (opcion === 'fuerza' && [Lm, Lb, e, Am, Vam, Aam, mm, mb, mc, Im].some(isNaN)) {
+        errorDiv.innerText = 'Complete todos los datos para análisis de fuerzas.';
+        return;
+      }
+
+      if (Lb < Lm + e) {
+        errorDiv.innerText = 'Error: Lb debe ser mayor o igual que Lm + e.';
+        return;
+      }
+
+      const Ab = asind((Lm * sind(Am) + e) / Lb);
+      const Pc = Lm * cosd(Am) + Lb * cosd(Ab);
+      document.getElementById('Ab').innerText = Ab.toFixed(4);
+      document.getElementById('Pc').innerText = Pc.toFixed(4);
+      if (opcion === 'posicion') return;
+
+      const M1 = [[-Lb * sind(Ab), -1, -Lm * sind(Am)],
+                  [-Lb * cosd(Ab), 0, Lm * cosd(Am)],
+                  [0, 0, 1]];
+      const M2 = [0, 0, Vam];
+      const detM1 = det3(M1);
+      const Vab = det3([[M2[0],M1[0][1],M1[0][2]],[M2[1],M1[1][1],M1[1][2]],[M2[2],M1[2][1],M1[2][2]]]) / detM1;
+      const Vc  = det3([[M1[0][0],M2[0],M1[0][2]],[M1[1][0],M2[1],M1[1][2]],[M1[2][0],M2[2],M1[2][2]]]) / detM1;
+      document.getElementById('Vab').innerText = Vab.toFixed(4);
+      document.getElementById('Vc').innerText = Vc.toFixed(4);
+      if (opcion === 'velocidad') return;
+
+      const M3 = [[Lb * sind(Ab), 1, Lm * sind(Am)],
+                  [Lb * cosd(Ab), 0, -Lm * cosd(Am)],
+                  [0, 0, 1]];
+      const M4 = [-Lm * cosd(Am) * Vam**2 - Lb * cosd(Ab) * Vab**2,
+                  -Lm * sind(Am) * Vam**2 + Lb * sind(Ab) * Vab**2,
+                  Aam];
+      const Aab = det3([[M4[0],M3[0][1],M3[0][2]],[M4[1],M3[1][1],M3[1][2]],[M4[2],M3[2][1],M3[2][2]]]) / det3(M3);
+      const Ac  = det3([[M3[0][0],M4[0],M3[0][2]],[M3[1][0],M4[1],M3[1][2]],[M3[2][0],M4[2],M3[2][2]]]) / det3(M3);
+      document.getElementById('Aab').innerText = Aab.toFixed(4);
+      document.getElementById('Ac').innerText = Ac.toFixed(4);
+      if (opcion === 'aceleracion') return;
+
+      const Fm = mm * (Lm / 2) * Aam;
+      const Fb = mb * (Lb / 2) * Aab;
+      const Rc = mc * Ac;
+      const Torque = Im * Aam + Fb * Lm * sind(Am);
+      document.getElementById('Fm').innerText = Fm.toFixed(2);
+      document.getElementById('Fb').innerText = Fb.toFixed(2);
+      document.getElementById('Rc').innerText = Rc.toFixed(2);
+      document.getElementById('Torque').innerText = Torque.toFixed(2);
+    }
+  </script>
+</body>
+</html>
